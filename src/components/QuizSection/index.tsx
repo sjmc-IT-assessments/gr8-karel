@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { multipleChoice, shortAnswer } from '../../data/questions'
+import { multipleChoice, shortAnswer } from '../data/questions'
 
 export default function QuizSection() {
   const [mcAnswers, setMcAnswers] = useState<(number | null)[]>(new Array(multipleChoice.length).fill(null))
