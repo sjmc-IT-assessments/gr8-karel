@@ -18,15 +18,21 @@ const ENTRY_IDS = {
   q13: "1515429967",
   q14: "1335032006",
   q15: "857678676",
+  // Add any remaining question IDs
 };
 
 interface Answers {
   [key: string]: string;
 }
 
+function convertToLabel(value: number | null): string {
+  const labels = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+  return value !== null ? labels[value] : '';
+}
+
 export async function submitForm(answers: Answers) {
   const formData = new FormData();
-  
+
   Object.keys(answers).forEach((qNumber) => {
     if (ENTRY_IDS[qNumber as keyof typeof ENTRY_IDS]) {
       formData.append(
@@ -36,7 +42,6 @@ export async function submitForm(answers: Answers) {
     }
   });
 
-  // Add debug logs to check the form data
   console.log('Form URL:', FORM_URL);
   console.log('Form Data:', Array.from(formData.entries()));
 
