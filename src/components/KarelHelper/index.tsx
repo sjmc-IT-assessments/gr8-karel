@@ -29,22 +29,28 @@ const KarelHelper = () => {
 
   useEffect(() => {
     // Random spin animation
+    const initialTimeout = setTimeout(() => {
+      setShowBubble(true)
+      setTimeout(() => setShowBubble(false), 4000)
+    }, 1000)
+    
     const spinInterval = setInterval(() => {
       if (Math.random() < 0.2) {
         setIsSpinning(true)
         setTimeout(() => setIsSpinning(false), 1000)
       }
-    }, 5000)
+    }, 4000)
 
     // Random speech bubble
     const bubbleInterval = setInterval(() => {
-      if (Math.random() < 0.3) {
+      if (Math.random() < 0.5) { // Increased probability
         setShowBubble(true)
-        setTimeout(() => setShowBubble(false), 3000)
+        setTimeout(() => setShowBubble(false), 4000)
       }
-    }, 10000)
+    }, 2000) 
 
     return () => {
+      clearTimeout(initialTimeout)
       clearInterval(spinInterval)
       clearInterval(bubbleInterval)
     }
