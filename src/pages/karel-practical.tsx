@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import KarelHelper from '@/components/KarelHelper'
+import Image from 'next/image'
 
 export default function KarelPractical() {
     const [studentInfo, setStudentInfo] = useState({
@@ -55,17 +56,27 @@ export default function KarelPractical() {
         </div>
         {/* Questions */}
         {/* Q1 */}
+        
         <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
           <h2 className="text-xl font-semibold mb-2">1. Row and Back (5 marks)</h2>
           
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div>
               <p className="font-semibold mb-2">Start World:</p>
-              <img src="/api/placeholder/400/200" alt="Start world" className="border" />
+              
+              <img src="/images/p1-start.png"
+              alt="Row and Back start"  
+              width={300}
+              height={300}
+              className="border" />
             </div>
             <div>
               <p className="font-semibold mb-2">End World:</p>
-              <img src="/api/placeholder/400/200" alt="End world" className="border" />
+              <img  src="/images/p1-end.png"  
+              alt="Row and Back end"
+               width={300}
+               height={300}
+              className="border" />
             </div>
           </div>
 
@@ -104,11 +115,17 @@ export default function KarelPractical() {
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div>
               <p className="font-semibold mb-2">Start World:</p>
-              <img src="/api/placeholder/400/200" alt="Start world" className="border" />
+              <img src="/images/p2-start.png" 
+              alt="Opposite Squares start" 
+              width={400} 
+              height={200}className="border" />
             </div>
             <div>
               <p className="font-semibold mb-2">End World:</p>
-              <img src="/api/placeholder/400/200" alt="End world" className="border" />
+              <img src="/images/p2-end.png" alt="Opposite Squares start" 
+              width={400} 
+              height={200}
+              className="border" />
             </div>
           </div>
 
@@ -147,11 +164,19 @@ export default function KarelPractical() {
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div>
               <p className="font-semibold mb-2">Start World:</p>
-              <img src="/api/placeholder/400/200" alt="Start world" className="border" />
+              <img src="/images/p3-start.png" 
+              alt="K for Karel start" 
+              width={400} 
+              height={200}
+              className="border" />
             </div>
             <div>
               <p className="font-semibold mb-2">End World:</p>
-              <img src="/api/placeholder/400/200" alt="End world" className="border" />
+              <img src="/images/p3-end.png" 
+              alt="K for Karel end" 
+              width={400}
+              height={200}
+              className="border" />
             </div>
           </div>
 
@@ -159,7 +184,7 @@ export default function KarelPractical() {
             <div>
               <h3 className="font-semibold">Requirements:</h3>
               <ul className="list-disc ml-5">
-                <li>10x10 world starting from bottom left</li>
+                <li>In a 10x10 world starting from bottom left</li>
                 <li>Create letter 'K' using tennis balls</li>
                 <li>Draw vertical line first, then diagonal branches</li>
                 <li>Return to starting position facing East</li>
@@ -190,11 +215,19 @@ export default function KarelPractical() {
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div>
               <p className="font-semibold mb-2">Start World:</p>
-              <img src="/api/placeholder/400/200" alt="Start world" className="border" />
+              <img src="/images/p4-start.png" 
+              alt="Target Pattern start" 
+              width={400} 
+              height={200} 
+              className="border" />
             </div>
             <div>
               <p className="font-semibold mb-2">End World:</p>
-              <img src="/api/placeholder/400/200" alt="End world" className="border" />
+              <img src="/images/p4-end.png" 
+              alt="Target Pattern start" 
+              width={400}
+              height={200}
+              className="border" />
             </div>
           </div>
 
