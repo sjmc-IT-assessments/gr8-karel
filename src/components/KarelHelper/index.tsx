@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import Image from 'next/image'
 
 const KarelHelper = () => {
   const [showHelper, setShowHelper] = useState(false)
@@ -96,8 +95,8 @@ const KarelHelper = () => {
             ${isSpinning ? 'animate-spin' : ''}
           `}
         >
-          <Image
-            src="/dog-sprite.png"
+          <img
+            src="/gr8-karel/dog-sprite.png"
             alt="Karel Helper"
             className="w-full h-full"
           />

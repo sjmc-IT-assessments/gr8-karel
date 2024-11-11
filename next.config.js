@@ -2,8 +2,7 @@ const nextConfig = {
   output: 'export',
   basePath: '/gr8-karel',
   images: {
- unoptimized: true, // Add this line
+    unoptimized: true
   },
-  trailingSlash: true
+  assetPrefix: '/gr8-karel/'
 }
-module.exports = nextConfig
