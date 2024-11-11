@@ -8,7 +8,10 @@ export default function KarelPractical() {
       class: ''
     })
     const [showModal, setShowModal] = useState(false)
-
+    const imageSize = {
+      width: 400,
+      height: 200
+    }
   const handleSubmit = () => {
     // Submit form data
     const formURL = `https://docs.google.com/forms/d/e/1FAIpQLSdeysBl-63gNCNOT8RD01_Bcood6Z3Gq-KV8W6zNZSuBFlatA/formResponse?entry.192175351=${studentInfo.name}&entry.680216375=${studentInfo.class}`
@@ -32,8 +35,16 @@ export default function KarelPractical() {
 `
 
   return (
+    <div className="min-h-screen bg-gray-200">
+    <div className="py-8 bg-gray-200 mb-4">
+      <h1 className="text-3xl font-bold text-center">Grade 8 Karel Assessment</h1>
+    </div>
+
+    <div className="max-w-6xl mx-auto px-4">
+
     <div className="min-h-screen bg-gray-50 py-8">
        <KarelHelper />
+       <div className="px-8"> 
       <div className="max-w-4xl mx-auto px-4">
         <h1 className="text-2xl font-bold mb-8">Section B - Practical (20 marks)</h1>
 
@@ -48,11 +59,12 @@ export default function KarelPractical() {
             />
             <input
               className="p-2 border rounded"
-              placeholder="Class (e.g. 8A)"
+              placeholder="Class (e.g. 8AC)"
               value={studentInfo.class}
               onChange={(e) => setStudentInfo({...studentInfo, class: e.target.value})}
             />
           </div>
+        </div>
         </div>
         {/* Questions */}
         {/* Q1 */}
@@ -66,16 +78,14 @@ export default function KarelPractical() {
               
               <img src="/images/p1-start.png"
               alt="Row and Back start"  
-              width={300}
-              height={300}
+              {...imageSize}
               className="border" />
             </div>
             <div>
               <p className="font-semibold mb-2">End World:</p>
               <img  src="/images/p1-end.png"  
               alt="Row and Back end"
-               width={300}
-               height={300}
+              {...imageSize}
               className="border" />
             </div>
           </div>
@@ -117,8 +127,8 @@ export default function KarelPractical() {
               <p className="font-semibold mb-2">Start World:</p>
               <img src="/images/p2-start.png" 
               alt="Opposite Squares start" 
-              width={400} 
-              height={200}className="border" />
+              {...imageSize}
+              className="border" />
             </div>
             <div>
               <p className="font-semibold mb-2">End World:</p>
@@ -166,16 +176,14 @@ export default function KarelPractical() {
               <p className="font-semibold mb-2">Start World:</p>
               <img src="/images/p3-start.png" 
               alt="K for Karel start" 
-              width={400} 
-              height={200}
+              {...imageSize}
               className="border" />
             </div>
             <div>
               <p className="font-semibold mb-2">End World:</p>
               <img src="/images/p3-end.png" 
               alt="K for Karel end" 
-              width={400}
-              height={200}
+              {...imageSize}
               className="border" />
             </div>
           </div>
@@ -217,16 +225,14 @@ export default function KarelPractical() {
               <p className="font-semibold mb-2">Start World:</p>
               <img src="/images/p4-start.png" 
               alt="Target Pattern start" 
-              width={400} 
-              height={200} 
+              {...imageSize}
               className="border" />
             </div>
             <div>
               <p className="font-semibold mb-2">End World:</p>
               <img src="/images/p4-end.png" 
               alt="Target Pattern start" 
-              width={400}
-              height={200}
+              {...imageSize}
               className="border" />
             </div>
           </div>
@@ -258,6 +264,10 @@ export default function KarelPractical() {
             />
           </div>
         </div>
+        </div>
+        </div>
+        
+
 
         {/* Submit Button */}
         <button 

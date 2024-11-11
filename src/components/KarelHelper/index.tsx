@@ -4,6 +4,14 @@ const KarelHelper = () => {
   const [showHelper, setShowHelper] = useState(false)
   const [showBubble, setShowBubble] = useState(false)
   const [isSpinning, setIsSpinning] = useState(false)
+  const [copyMessage, setCopyMessage] = useState('')
+  const [copiedSnippet, setCopiedSnippet] = useState<number | null>(null)
+
+  const handleCopy = (text: string, index: number) => {
+  navigator.clipboard.writeText(text)
+  setCopiedSnippet(index)
+  setTimeout(() => setCopiedSnippet(null), 1000)
+}
 
   const codeSnippets = {
     basic: [
@@ -27,6 +35,7 @@ const KarelHelper = () => {
     ]
   }
 
+  
   useEffect(() => {
     // Random spin animation
     const initialTimeout = setTimeout(() => {
@@ -43,7 +52,7 @@ const KarelHelper = () => {
 
     // Random speech bubble
     const bubbleInterval = setInterval(() => {
-      if (Math.random() < 0.5) { // Increased probability
+      if (Math.random() < 0.5) {
         setShowBubble(true)
         setTimeout(() => setShowBubble(false), 4000)
       }
@@ -58,7 +67,6 @@ const KarelHelper = () => {
 
   return (
     <>
-      {/* Karel and Speech Bubble */}
       <div className="fixed left-4 top-1/2 transform -translate-y-1/2 flex flex-col items-center">
         <div className={`
           bg-white px-3 py-2 rounded-lg shadow-lg mb-2 
@@ -86,35 +94,48 @@ const KarelHelper = () => {
         </button>
       </div>
 
-      {/* Helper Panel */}
       {showHelper && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg max-w-2xl w-full max-h-[80vh] overflow-y-auto">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-xl font-bold">Karel Code Helper</h3>
-              <button 
-                onClick={() => setShowHelper(false)}
-                className="text-gray-500 hover:text-gray-700"
-              >
-                Close
-              </button>
-            </div>
+          <div className="relative w-full max-w-2xl">
+            <button 
+              onClick={() => setShowHelper(false)}
+              className="absolute -top-10 right-0 bg-red-500 text-white px-4 py-2 rounded shadow hover:bg-red-600"
+            >
+              Close
+            </button>
+            
+            <div className="bg-white p-6 rounded-lg max-w-2xl w-full max-h-[80vh] overflow-y-auto">
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-xl font-bold">Karel Code Helper</h3>
+              </div>
 
-            <div className="space-y-6">
-              {/* Code Snippets Sections */}
-              {Object.entries(codeSnippets).map(([category, snippets]) => (
-                <div key={category}>
-                  <h4 className="font-semibold mb-2">{category.charAt(0).toUpperCase() + category.slice(1)}</h4>
-                  <div className="grid grid-cols-2 gap-2">
-                    {snippets.map((snippet, i) => (
-                      <div key={i} className="p-2 bg-gray-50 rounded">
-                        <pre className="font-mono text-purple-600">{snippet.name}</pre>
-                        <span className="text-sm text-gray-600">{snippet.desc}</span>
-                      </div>
-                    ))}
+              <div className="space-y-6">
+                {Object.entries(codeSnippets).map(([category, snippets]) => (
+                  <div key={category}>
+                    <h4 className="font-semibold mb-2">
+                      {category.charAt(0).toUpperCase() + category.slice(1)}
+                    </h4>
+                    <div className="grid grid-cols-2 gap-2">
+                      {snippets.map((snippet, i) => (
+                        <div key={i} className="p-2 bg-gray-50 rounded relative">
+                          <pre 
+                            className="font-mono text-purple-600 cursor-copy"
+                            onDoubleClick={() => handleCopy(snippet.name,i)} //change to onclick for single click here
+                          >
+                            {snippet.name}
+                          </pre>
+                          <span className="text-sm text-gray-600">{snippet.desc}</span>
+                          {copiedSnippet === i && (
+                          <div className="absolute top-1 right-1 bg-green-500 text-white text-xs px-2 py-1 rounded">
+                              Copied! {/*{copyMessage}*/}
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
