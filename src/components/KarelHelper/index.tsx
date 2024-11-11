@@ -96,7 +96,7 @@ const KarelHelper = () => {
           `}
         >
           <img
-            src="/gr8-karel/dog-sprite.png"
+            src="/gr8-karel/images/dog-sprite.png"
             alt="Karel Helper"
             className="w-full h-full"
           />
