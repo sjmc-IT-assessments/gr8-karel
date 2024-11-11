@@ -2,7 +2,7 @@ const nextConfig = {
   output: 'export',
   basePath: '/gr8-karel',
   images: {
-    domains: ['raw.githubusercontent.com'],
+ unoptimized: true, // Add this line
   },
   trailingSlash: true
 }
