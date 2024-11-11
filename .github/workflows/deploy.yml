@@ -3,18 +3,23 @@ on:
   push:
     branches: [main]
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
-      - uses: actions/checkout@v3
-      - run: |
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+
+      - name: Build
+        run: |
           npm ci
           npm run build
-      - run: |
-          git config --global user.name github-actions
-          git config --global user.email github-actions@github.com
-          git add dist -f
-          git commit -m "Deploy"
+
+      - name: Deploy
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add -f .next
+          git commit -m "Deploy website"
           git push origin HEAD:gh-pages -f
