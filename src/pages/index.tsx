@@ -9,7 +9,7 @@ export default function Home() {
       <h1 className="text-3xl font-bold mb-8 text-center">Grade 8 Karel Assessment</h1>
       <QuizSection />
       <div className="mt-8 text-center">
-        <Link href="/karel-practical" className="bg-blue-500 text-white px-6 py-2 rounded">
+        <Link href="/gr8-karel/karel-practical" className="bg-blue-500 text-white px-6 py-2 rounded">
           Continue to Practical Section
         </Link>
       </div>
