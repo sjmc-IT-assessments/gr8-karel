@@ -55,7 +55,7 @@ export default function QuizSection() {
   }
 
   const handleModalConfirm = () => {
-    window.location.href = "/karel-practical"
+    window.location.href = "/gr8-karel/karel-practical"
   }
 
   return (
