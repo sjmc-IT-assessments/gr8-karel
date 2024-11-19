@@ -20,17 +20,16 @@ export default function Home() {
 
     return (
         <div className="min-h-screen bg-blue-500 relative overflow-hidden flex flex-col items-center justify-center">
-            {/* Animated background elements */}
             <div className="absolute inset-0 w-full h-full">
-                {[...Array(40)].map((_, i) => (
+                {[...Array(80)].map((_, i) => (
                     <div key={i} className="absolute animate-float"
                         style={{
                             left: `${Math.random() * 100}%`,
                             top: `${Math.random() * 100}%`,
-                            animationDelay: `${Math.random() * 3}s`,
-                            width: `${Math.random() * 15 + 5}px`,
-                            height: `${Math.random() * 15 + 5}px`,
-                            background: 'rgba(255,255,255,0.2)',
+                            animationDelay: `${Math.random() * 2}s`,
+                            width: `${Math.random() * 25 + 5}px`,
+                            height: `${Math.random() * 25 + 5}px`,
+                            background: 'rgba(255,255,255,0.3)', // Brighter
                             borderRadius: '50%'
                         }} />
                 ))}
