@@ -5,12 +5,6 @@ module.exports = {
     './src/components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
-  },
-  plugins: [],
-
-  content: [/* ... */],
-  theme: {
     extend: {
       animation: {
         'float': 'float 10s infinite',
@@ -22,5 +16,6 @@ module.exports = {
         }
       }
     }
-  }
+  },
+  plugins: [],
 }
