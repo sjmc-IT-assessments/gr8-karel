@@ -119,6 +119,7 @@ export default function KarelPractical() {
                 <textarea
                   className="w-full mt-4 p-3 border rounded font-mono"
                   rows={10}
+                  value={starterCode}
                   onChange={(e) => setAnswers({ ...answers, 1: e.target.value })}
                 />
               </div>
@@ -168,6 +169,7 @@ export default function KarelPractical() {
                 <textarea
                   className="w-full mt-4 p-3 border rounded font-mono"
                   rows={10}
+                  value={starterCode}
                   onChange={(e) => setAnswers({ ...answers, 2: e.target.value })}
                 />
               </div>
@@ -217,6 +219,7 @@ export default function KarelPractical() {
                 <textarea
                   className="w-full mt-4 p-3 border rounded font-mono"
                   rows={10}
+                  value={starterCode}
                   onChange={(e) => setAnswers({ ...answers, 3: e.target.value })}
                 />
               </div>
@@ -266,6 +269,7 @@ export default function KarelPractical() {
                 <textarea
                   className="w-full mt-4 p-3 border rounded font-mono"
                   rows={10}
+                  value={starterCode}
                   onChange={(e) => setAnswers({ ...answers, 4: e.target.value })}
                 />
               </div>
