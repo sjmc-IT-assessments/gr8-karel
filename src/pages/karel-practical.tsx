@@ -5,7 +5,13 @@ import Image from 'next/image'
 export default function KarelPractical() {
   const [studentInfo, setStudentInfo] = useState({
     name: '',
-    class: ''
+    class: '',
+  })
+  const [getAnswers, SetAnswers] = useState({
+    1: '',
+    2: '',
+    3: '',
+    4: '',
   })
   const [showModal, setShowModal] = useState(false)
   const imageSize = {
@@ -14,10 +20,11 @@ export default function KarelPractical() {
   }
   const handleSubmit = () => {
     // Submit form data
-    const formURL = `https://docs.google.com/forms/d/e/1FAIpQLSdeysBl-63gNCNOT8RD01_Bcood6Z3Gq-KV8W6zNZSuBFlatA/formResponse?entry.192175351=${studentInfo.name}&entry.680216375=${studentInfo.class}`
+    const formURL = `https://docs.google.com/forms/d/e/1FAIpQLSdeysBl-63gNCNOT8RD01_Bcood6Z3Gq-KV8W6zNZSuBFlatA/formResponse?entry.192175351=${studentInfo.name}&entry.680216375=${studentInfo.class}&entry.76138761=${getAnswers.1
+  }&entry.2036080317=${getAnswers.2}&entry.691546682=${getAnswers.3}& entry.428554405 = ${getAnswers.4 },
 
-    // Open in hidden iframe
-    const iframe = document.createElement('iframe')
+  const iframe = document.createElement('iframe')`
+
     iframe.style.display = 'none'
     iframe.src = formURL
     document.body.appendChild(iframe)
@@ -29,10 +36,10 @@ export default function KarelPractical() {
   const starterCode = `function start() {
     // Write your code here
     // Remember to call the functions you create
-}
+  }
 
-// Create your helper functions below
-`
+  // Create your helper functions below
+  `
 
   return (
     <div className="min-h-screen bg-gray-200">
@@ -113,7 +120,7 @@ export default function KarelPractical() {
                 <textarea
                   className="w-full mt-4 p-3 border rounded font-mono"
                   rows={10}
-                  defaultValue={starterCode}
+                  value={getAnswers.1}
                 />
               </div>
             </div>
@@ -162,7 +169,7 @@ export default function KarelPractical() {
                 <textarea
                   className="w-full mt-4 p-3 border rounded font-mono"
                   rows={10}
-                  defaultValue={starterCode}
+                  value={getAnswers.2}
                 />
               </div>
             </div>
@@ -211,7 +218,7 @@ export default function KarelPractical() {
                 <textarea
                   className="w-full mt-4 p-3 border rounded font-mono"
                   rows={10}
-                  defaultValue={starterCode}
+                  value={getAnswers.3}
                 />
               </div>
             </div>
@@ -260,7 +267,7 @@ export default function KarelPractical() {
                 <textarea
                   className="w-full mt-4 p-3 border rounded font-mono"
                   rows={10}
-                  defaultValue={starterCode}
+                  value={getAnswers.4}
                 />
               </div>
             </div>
