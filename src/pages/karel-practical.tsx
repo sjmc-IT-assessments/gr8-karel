@@ -7,31 +7,30 @@ export default function KarelPractical() {
     name: '',
     class: '',
   })
-  const [getAnswers, SetAnswers] = useState({
+  const [answers, setAnswers] = useState({
     1: '',
     2: '',
     3: '',
     4: '',
   })
+
   const [showModal, setShowModal] = useState(false)
+
   const imageSize = {
     width: 400,
     height: 200
   }
+
   const handleSubmit = () => {
-    // Submit form data
-    const formURL = `https://docs.google.com/forms/d/e/1FAIpQLSdeysBl-63gNCNOT8RD01_Bcood6Z3Gq-KV8W6zNZSuBFlatA/formResponse?entry.192175351=${studentInfo.name}&entry.680216375=${studentInfo.class}&entry.76138761=${getAnswers.1
-  }&entry.2036080317=${getAnswers.2}&entry.691546682=${getAnswers.3}& entry.428554405 = ${getAnswers.4 },
+    const formURL = `https://docs.google.com/forms/d/e/1FAIpQLSdeysBl-63gNCNOT8RD01_Bcood6Z3Gq-KV8W6zNZSuBFlatA/formResponse?entry.192175351=${studentInfo.name}&entry.680216375=${studentInfo.class}&entry.76138761=${answers[1]}&entry.2036080317=${answers[2]}&entry.691546682=${answers[3]}&entry.428554405=${answers[4]}`
 
-  const iframe = document.createElement('iframe')`
-
+    const iframe = document.createElement('iframe')
     iframe.style.display = 'none'
     iframe.src = formURL
     document.body.appendChild(iframe)
-
-    // Show success modal
     setShowModal(true)
   }
+
 
   const starterCode = `function start() {
     // Write your code here
@@ -120,7 +119,7 @@ export default function KarelPractical() {
                 <textarea
                   className="w-full mt-4 p-3 border rounded font-mono"
                   rows={10}
-                  value={getAnswers.1}
+                  onChange={(e) => setAnswers({ ...answers, 1: e.target.value })}
                 />
               </div>
             </div>
@@ -169,7 +168,7 @@ export default function KarelPractical() {
                 <textarea
                   className="w-full mt-4 p-3 border rounded font-mono"
                   rows={10}
-                  value={getAnswers.2}
+                  onChange={(e) => setAnswers({ ...answers, 2: e.target.value })}
                 />
               </div>
             </div>
@@ -218,7 +217,7 @@ export default function KarelPractical() {
                 <textarea
                   className="w-full mt-4 p-3 border rounded font-mono"
                   rows={10}
-                  value={getAnswers.3}
+                  onChange={(e) => setAnswers({ ...answers, 3: e.target.value })}
                 />
               </div>
             </div>
@@ -267,7 +266,7 @@ export default function KarelPractical() {
                 <textarea
                   className="w-full mt-4 p-3 border rounded font-mono"
                   rows={10}
-                  value={getAnswers.4}
+                  onChange={(e) => setAnswers({ ...answers, 4: e.target.value })}
                 />
               </div>
             </div>
