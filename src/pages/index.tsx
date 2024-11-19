@@ -21,7 +21,7 @@ export default function Home() {
     return (
         <div className="min-h-screen bg-blue-500 relative overflow-hidden flex flex-col items-center justify-center">
             <div className="absolute inset-0 w-full h-full">
-                {[...Array(80)].map((_, i) => (
+                {[...Array(40)].map((_, i) => (
                     <div key={i} className="absolute animate-float"
                         style={{
                             left: `${Math.random() * 100}%`,
@@ -29,7 +29,7 @@ export default function Home() {
                             animationDelay: `${Math.random() * 2}s`,
                             width: `${Math.random() * 25 + 5}px`,
                             height: `${Math.random() * 25 + 5}px`,
-                            background: 'rgba(255,255,255,0.3)', // Brighter
+                            background: 'rgba(255,255,255,0.3)',
                             borderRadius: '50%'
                         }} />
                 ))}
@@ -78,7 +78,7 @@ export default function Home() {
             <div className="absolute bottom-4 text-white/70 text-sm italic z-10">
                 Designed, set and developed with love ❤️ Mr Coetzee
             </div>
-        </div>
+        </div >
 
     )
 }
