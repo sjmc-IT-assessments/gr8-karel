@@ -37,7 +37,17 @@ export default function Home() {
             </div>
 
             <div className="relative z-10 mb-8">
-                <Image src="/logo.png" alt="SJMC Logo" width={120} height={120} />
+                <Image
+                    src="logo.png"
+                    alt="SJMC Logo"
+                    width={120}
+                    height={120}
+                    priority
+                    onError={(e) => {
+                        console.error('Image failed to load');
+                        e.currentTarget.src = '/images/logo.png'; // Try alternate path
+                    }}
+                />
             </div>
 
             <form onSubmit={checkPassword} className="relative z-10 bg-white/80 backdrop-blur p-8 rounded-xl shadow-xl w-80 space-y-6">
@@ -67,7 +77,7 @@ export default function Home() {
             </form>
             {/* Add this right before the closing main div */}
             <div className="absolute bottom-4 text-white/70 text-sm italic z-10">
-                Designed, set and developed with love ❤️ Mr Coetzee 
+                Designed, set and developed with love ❤️ Mr Coetzee
             </div>
         </div>
 
