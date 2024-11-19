@@ -1,13 +1,17 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 
 export default function Home() {
     const [password, setPassword] = useState('')
+    const [loading, setLoading] = useState(false)
     const router = useRouter()
 
-    const checkPassword = (e: React.FormEvent) => {
+    const checkPassword = async (e: React.FormEvent) => {
         e.preventDefault()
         if (password === 'PancakeSymphony') {
+            setLoading(true)
+            await new Promise(r => setTimeout(r, 1500)) // Cool loading effect
             router.push('/assessment')
         } else {
             alert('Incorrect password')
@@ -15,12 +19,28 @@ export default function Home() {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-200 via-purple-100 to-blue-200 flex flex-col items-center justify-center animate-gradient">
-            <div className="text-center space-y-6 mb-8">
-                <h2 className="text-2xl font-bold text-gray-700">SJMC</h2>
-                <img src="/logo.png" alt="SJMC Logo" className="w-24 h-24 mx-auto" />
+        <div className="min-h-screen bg-gradient-to-br from-blue-400 to-purple-600 relative overflow-hidden flex flex-col items-center justify-center">
+            {/* Animated background elements */}
+            <div className="absolute inset-0 w-full h-full">
+                {[...Array(20)].map((_, i) => (
+                    <div key={i} className="absolute animate-float"
+                        style={{
+                            left: `${Math.random() * 100}%`,
+                            top: `${Math.random() * 100}%`,
+                            animationDelay: `${Math.random() * 5}s`,
+                            width: `${Math.random() * 20 + 10}px`,
+                            height: `${Math.random() * 20 + 10}px`,
+                            background: 'rgba(255,255,255,0.1)',
+                            borderRadius: '50%'
+                        }} />
+                ))}
             </div>
-            <form onSubmit={checkPassword} className="bg-white/80 backdrop-blur p-8 rounded-xl shadow-xl w-80 space-y-6">
+
+            <div className="relative z-10 mb-8">
+                <Image src="/logo.png" alt="SJMC Logo" width={120} height={120} />
+            </div>
+
+            <form onSubmit={checkPassword} className="relative z-10 bg-white/80 backdrop-blur p-8 rounded-xl shadow-xl w-80 space-y-6">
                 <h1 className="text-3xl font-bold text-center text-gray-800">Grade 8 Karel Assessment</h1>
                 <input
                     type="password"
@@ -28,11 +48,28 @@ export default function Home() {
                     onChange={(e) => setPassword(e.target.value)}
                     className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-center"
                     placeholder="Enter password"
+                    disabled={loading}
                 />
-                <button type="submit" className="w-full bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-lg transition-all hover:scale-105">
-                    Start Assessment
+                <button
+                    type="submit"
+                    className="w-full bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-lg transition-all hover:scale-105 disabled:opacity-50"
+                    disabled={loading}
+                >
+                    {loading ? (
+                        <div className="flex items-center justify-center">
+                            <div className="animate-spin h-6 w-6 border-4 border-white border-t-transparent rounded-full" />
+                            <span className="ml-2">Loading...</span>
+                        </div>
+                    ) : (
+                        'Start Assessment'
+                    )}
                 </button>
             </form>
+            {/* Add this right before the closing main div */}
+            <div className="absolute bottom-4 text-white/70 text-sm italic z-10">
+                Designed, set and developed with love ❤️ Mr Coetzee 
+            </div>
         </div>
+
     )
 }
