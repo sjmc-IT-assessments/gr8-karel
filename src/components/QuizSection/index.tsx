@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { multipleChoice, shortAnswer } from '../../data/questions'
 import { submitForm } from '@/utils/submitForm'
 import Modal from '@/components/Modal'
+import { useRouter } from 'next/router'
 
 export default function QuizSection() {
   const [mcAnswers, setMcAnswers] = useState<(number | null)[]>(new Array(multipleChoice.length).fill(null))
@@ -9,7 +10,9 @@ export default function QuizSection() {
   const [name, setName] = useState('')
   const [studentClass, setStudentClass] = useState('')
   const [isModalVisible, setModalVisible] = useState(false)
-
+  const router = useRouter()
+  const [password, setPassword] = useState('')
+  const [showInput, setShowInput] = useState(false)
   const handleMCAnswer = (questionIndex: number, answerIndex: number) => {
     const newAnswers = [...mcAnswers]
     newAnswers[questionIndex] = answerIndex
@@ -28,7 +31,7 @@ export default function QuizSection() {
       alert('Please fill in all required fields.')
       return
     }
-    
+
     const formattedAnswers: { [key: string]: string } = {
       name,
       class: studentClass,
@@ -56,6 +59,36 @@ export default function QuizSection() {
 
   const handleModalConfirm = () => {
     window.location.href = "/gr8-karel/karel-practical"
+    {
+      showInput ? (
+        <div className="flex gap-2 mt-4">
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter password"
+          />
+          <button
+            onClick={() => {
+              if (password === "yourpassword") {
+                // Handle navigation to practical
+              }
+            }}
+          >
+            Skip to Practical
+          </button>
+        </div>
+      ) : (
+        <button onClick={() => setShowInput(true)}>
+          Teacher Options
+        </button>
+      )
+    }
+  }
+  const skipToPractical = () => {
+    if (password === "karel123") {
+      window.location.href = "/gr8-karel/karel-practical"
+    }
   }
 
   return (
@@ -108,7 +141,7 @@ export default function QuizSection() {
             </div>
           </div>
         ))}
-        
+
         {/* Short Answer Questions */}
         {shortAnswer.map((question, qIndex) => (
           <div key={question.id} className="bg-white rounded-lg shadow-sm p-6 mb-6">
@@ -129,12 +162,38 @@ export default function QuizSection() {
         ))}
 
         {/* Submit Button */}
-        <button 
+        <button
           onClick={handleSubmit}
           className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600"
         >
           Submit Theory Section
         </button>
+      </div>
+      <div className="mt-4 text-right">
+        {showInput ? (
+          <div className="flex gap-2 justify-end">
+            <input
+              type="password"
+              className="border p-1"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter password"
+            />
+            <button
+              onClick={skipToPractical}
+              className="bg-gray-500 text-white px-4 py-1 rounded"
+            >
+              Skip to Practical
+            </button>
+          </div>
+        ) : (
+          <button
+            onClick={() => setShowInput(true)}
+            className="text-gray-500 text-sm"
+          >
+            Teacher Options
+          </button>
+        )}
       </div>
 
       {/* Modal */}
@@ -149,6 +208,7 @@ export default function QuizSection() {
       )}
     </div>
   )
+
 }
 
 function convertToLabel(value: number | null): string {
