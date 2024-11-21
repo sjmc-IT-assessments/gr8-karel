@@ -92,10 +92,9 @@ export default function QuizSection() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-
+    <div className="min-h-screen bg-gray-50 py-8 ">
       {showInput ? (
-        <div className="flex gap-2 justify-right">
+        <div className="flex gap-2 justify-center">
           <input
             type="password"
             className="border p-1"
@@ -113,7 +112,8 @@ export default function QuizSection() {
       ) : (
         <button
           onClick={() => setShowInput(true)}
-          className="text-gray-500 text-sm"
+          className="bg-blue-500 text-white px-4 py-1 rounded"
+          style={{ display: 'block', margin: '0 auto' }}
         >
           Skip to Practical
         </button>
