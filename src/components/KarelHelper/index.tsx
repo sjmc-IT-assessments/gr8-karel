@@ -13,7 +13,7 @@ const KarelHelper = () => {
     setTimeout(() => setCopiedSnippet(null), 1000)
   }
   const openKarelSandbox = () => {
-    window.open('https://codehs.com/sandbox/id/javascript-karel-gN9q86', '_blank')
+    window.open('https://codehs.com/sandbox/id/javascript-superkarel-ANOr1X', '_blank')
   }
   const codeSnippets = {
     basic: [
