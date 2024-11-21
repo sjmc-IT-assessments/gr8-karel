@@ -19,9 +19,6 @@ export default function KarelSection() {
           placeholder="Paste your Karel code here..."
           name="entry.123456789" // Update with your Google Form field ID
         />
-        {/* Instructions GIF */} 
-        <div className="mt-4"> <img src="/instructions.gif" alt="Instructions GIF" />
-        </div>
       </div>
     </div>
   )

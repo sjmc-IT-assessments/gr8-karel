@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 
+
 export default function Home() {
     const [password, setPassword] = useState('')
     const [loading, setLoading] = useState(false)
