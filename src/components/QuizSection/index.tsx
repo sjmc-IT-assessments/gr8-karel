@@ -80,7 +80,7 @@ export default function QuizSection() {
         </div>
       ) : (
         <button onClick={() => setShowInput(true)}>
-          Teacher Options
+          Skip to Practical
         </button>
       )
     }
@@ -95,7 +95,32 @@ export default function QuizSection() {
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-4xl mx-auto px-4">
         <h1 className="text-2xl font-bold mb-8">Section A - Theory (20 marks)</h1>
-
+        <div className="mt-4 text-right">
+          {showInput ? (
+            <div className="flex gap-2 justify-end">
+              <input
+                type="password"
+                className="border p-1"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter password"
+              />
+              <button
+                onClick={skipToPractical}
+                className="bg-gray-500 text-white px-4 py-1 rounded"
+              >
+                Skip to Practical
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={() => setShowInput(true)}
+              className="text-gray-500 text-sm"
+            >
+              Skip to Practical
+            </button>
+          )}
+        </div>
         {/* Student Info */}
         <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
           <div className="grid grid-cols-2 gap-4">
@@ -169,33 +194,6 @@ export default function QuizSection() {
           Submit Theory Section
         </button>
       </div>
-      <div className="mt-4 text-right">
-        {showInput ? (
-          <div className="flex gap-2 justify-end">
-            <input
-              type="password"
-              className="border p-1"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter password"
-            />
-            <button
-              onClick={skipToPractical}
-              className="bg-gray-500 text-white px-4 py-1 rounded"
-            >
-              Skip to Practical
-            </button>
-          </div>
-        ) : (
-          <button
-            onClick={() => setShowInput(true)}
-            className="text-gray-500 text-sm"
-          >
-            Teacher Options
-          </button>
-        )}
-      </div>
-
       {/* Modal */}
       {isModalVisible && (
         <Modal
