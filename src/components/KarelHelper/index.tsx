@@ -12,7 +12,9 @@ const KarelHelper = () => {
     setCopiedSnippet(`${category}-${index}`)
     setTimeout(() => setCopiedSnippet(null), 1000)
   }
-
+  const openKarelSandbox = () => {
+    window.open('https://codehs.com/sandbox/id/javascript-karel-gN9q86', '_blank')
+  }
   const codeSnippets = {
     basic: [
       { name: 'move()', desc: 'Move Karel forward one space' },
@@ -29,11 +31,13 @@ const KarelHelper = () => {
       { name: 'notFacingWest()', desc: 'Check if Karel is not facing west' }
     ],
     'Control Structures': [
-      { name: `if (condition) {
+      {
+        name: `if (condition) {
         // code
     } else {
         // code
-    }`, desc: 'Execute different code based on a condition' }
+    }`, desc: 'Execute different code based on a condition'
+      }
     ],
     loops: [
       { name: 'while (condition) {\n  // code\n}', desc: 'Repeat while condition is true' },
@@ -42,6 +46,7 @@ const KarelHelper = () => {
     functions: [
       { name: 'function name() {\n  // code\n}', desc: 'Create a new function' }
     ]
+
   }
 
 
@@ -75,7 +80,18 @@ const KarelHelper = () => {
   }, [])
 
   return (
-    <>
+    <div>
+      <div className="mb-4 text-center">
+        <button 
+          onClick={openKarelSandbox}
+          className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg shadow-md"
+        >
+          Open Karel Sandbox
+        </button>
+        <p className="text-sm text-gray-600 mt-2">
+          Test your code in the sandbox, then copy it back to submit
+        </p>
+      </div>
       <div className="fixed left-4 top-1/2 transform -translate-y-1/2 flex flex-col items-center">
         <div className={`
           bg-white px-3 py-2 rounded-lg shadow-lg mb-2 
@@ -149,7 +165,7 @@ const KarelHelper = () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   )
 }
 

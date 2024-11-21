@@ -54,9 +54,15 @@ export default function KarelPractical() {
 
         <div className="min-h-screen bg-gray-50 py-8">
           <KarelHelper />
-          <div className="px-8">
+          {/* Instructions GIF */}
+          <div className="mt-4">
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <img src="instructions.gif" alt="Instructions GIF" width="800" height="800" />
+            </div>
+          </div>
+          <div className="mt-8 px-8">
             <div className="max-w-4xl mx-auto px-4">
-              <h1 className="text-2xl font-bold mb-8">Section B - Practical (20 marks)</h1>
+              <h1 className="text-2xl font-bold mb-8">Student Infromation</h1>
 
               {/* Student Info */}
               <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
@@ -76,11 +82,13 @@ export default function KarelPractical() {
                 </div>
               </div>
             </div>
-            {/* Questions */}
             {/* Q1 */}
-
+            <div className="max-w-4xl mx-auto px-4">
+              <h1 className="text-2xl font-bold mb-8">Questions </h1>
+            </div>
             <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
-              <h2 className="text-xl font-semibold mb-2">1. Row and Back (5 marks)</h2>
+              <h2 className="text-xl font-semibold mb-2">Question 1. Row and Back (5 marks)</h2>
+              <span></span>
 
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div>
