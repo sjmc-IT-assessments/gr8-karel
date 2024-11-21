@@ -94,7 +94,7 @@ export default function QuizSection() {
   return (
     <div className="min-h-screen bg-gray-50 py-8 ">
       {showInput ? (
-        <div className="flex gap-2 justify-center">
+        <div className="flex gap-2 justify-right">
           <input
             type="password"
             className="border p-1"
